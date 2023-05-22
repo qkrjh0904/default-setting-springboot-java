@@ -17,12 +17,12 @@ import java.util.Map;
 
 @Configuration
 @EnableJpaAuditing
-@EntityScan(basePackages = {"com.complete.defaultsettingspringbootjava"})
-@EnableJpaRepositories(basePackages = {"com.complete.defaultsettingspringbootjava"})
+@EntityScan(basePackages = {"com.complete"})
+@EnableJpaRepositories(basePackages = {"com.complete"})
 @RequiredArgsConstructor
 public class EntityManagerConfig {
 
-    private static final String[] PACKAGE_TO_SCAN = {"com.complete.defaultsettingspringbootjava"};
+    private static final String[] PACKAGE_TO_SCAN = {"com.complete"};
     private final DataSource dataSource;
 
     @Bean(name = "entityManagerFactory")

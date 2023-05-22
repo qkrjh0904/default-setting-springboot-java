@@ -22,13 +22,4 @@ public class Member extends BaseTimeEntity {
 
     private String name;
 
-    private String email;
-
-    public static Member create(String name, String email) {
-        Member member = new Member();
-        member.name = name;
-        member.email = email;
-        return member;
-    }
-
 }
