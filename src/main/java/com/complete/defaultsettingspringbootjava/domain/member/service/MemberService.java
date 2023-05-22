@@ -31,4 +31,11 @@ public class MemberService {
                 .collect(Collectors.toList());
         return FindAllMemberRs.create(list);
     }
+
+    public FindAllMemberRs findAllMemberQuery() {
+        List<FindAllMemberDto> list = memberRepository.findAllQuery().stream()
+                .map(FindAllMemberDto::create)
+                .collect(Collectors.toList());
+        return FindAllMemberRs.create(list);
+    }
 }

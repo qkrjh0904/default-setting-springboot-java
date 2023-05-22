@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 class MemberServiceTest {
 
@@ -24,7 +26,10 @@ class MemberServiceTest {
     }
 
     @Test
-    void findAllMember() {
-
+    void findAllMemberQuery() {
+        List<Member> list = memberRepository.findAllQuery();
+        for (Member member : list) {
+            System.out.println(member.getId() + "::" + member.getName());
+        }
     }
 }

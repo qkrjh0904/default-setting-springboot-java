@@ -30,4 +30,5 @@ public class Member extends BaseTimeEntity {
         member.email = email;
         return member;
     }
+
 }

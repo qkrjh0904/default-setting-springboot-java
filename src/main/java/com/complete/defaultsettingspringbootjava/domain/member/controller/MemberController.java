@@ -23,6 +23,6 @@ public class MemberController {
 
     @GetMapping("/api/member/all")
     public FindAllMemberRs findAllMember(){
-        return memberService.findAllMember();
+        return memberService.findAllMemberQuery();
     }
 }
