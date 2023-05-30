@@ -23,6 +23,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.0'
     id 'io.spring.dependency-management' version '1.1.0'
+    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
 }
 
 group = 'com.complete.default-setting-springboot-java'
@@ -47,13 +48,12 @@ dependencies {
 
     // Querydsl
     implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
-    implementation 'com.querydsl:querydsl-apt:5.0.0:jakarta'
+    annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jakarta'
     annotationProcessor "jakarta.annotation:jakarta.annotation-api"
     annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 
     // p6spy
     implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0'
-    
     // mariadb
     implementation 'org.mariadb.jdbc:mariadb-java-client'
 
@@ -71,5 +71,23 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+    jpa = true
+    querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+    main.java.srcDir querydslDir
+}
+
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
 }
 ```
